@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body ::selection {
+            background-color: #e51e78;
+        }
+
+        header {
+            width: 100%;
+            height: 69px;
+            background: linear-gradient(to right, #fff4f9, #ffffff);
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1470px;
+            height: 100%;
+            margin: auto;
+            padding: 0px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background-color: #e51e78;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .logo-text h2 {
+            font-size: 21px;
+            color: #182033;
+        }
+
+        .logo-text p {
+            font-size: 13px;
+            color: #687080;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #e51e78;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 27px;
+        }
+
+        .nav-right i {
+            font-size: 19px;
+            color: #374151;
+            cursor: pointer;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-right i:hover {
+            background-color: #e37fac95;
+            color: #ca0b61;
+        }
+
+        .nav-right button {
+            background-color: #e51e78;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 22px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .nav-right button:hover {
+            background-color: #c91665;
+        }
+
+        .contact-hero {
+            width: 100%;
+            height: 440px;
+            background-color: #df247b;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .contact-hero h1 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 72px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact-hero p {
+            max-width: 1000px;
+            font-size: 27px;
+            line-height: 1.5;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .contact-hero {
+                height: 350px;
+            }
+
+            .contact-hero h1 {
+                font-size: 42px;
+            }
+
+            .contact-hero p {
+                font-size: 18px;
+            }
+        }
+
+        .contact-section {
+            width: 100%;
+            padding: 35px 3.5%;
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            gap: 70px;
+            align-items: start;
+        }
+
+        .contact-form,
+        .contact-information {
+            width: 100%;
+            min-width: 0;
+        }
+
+        .form-group select {
+            background-color: white;
+        }
+
+        .contact-form button {
+            width: auto;
+            padding: 11px 22px;
+        }
+
+        .contact-form h2,
+        .contact-information h2 {
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 25px;
+            color: #182033;
+            margin-bottom: 8px;
+        }
+
+        .contact-form>p,
+        .contact-information>p {
+            font-size: 14px;
+            color: #687080;
+            margin-bottom: 27px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 19px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #dce0e7;
+            border-radius: 6px;
+            padding: 11px 12px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #374151;
+            outline: none;
+        }
+
+        .form-group input,
+        .form-group select {
+            height: 38px;
+        }
+
+        .form-group textarea {
+            height: 92px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #e51e78;
+        }
+
+        .contact-form button {
+            background-color: #e51e78;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 11px 22px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #c91665;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            margin-bottom: 17px;
+        }
+
+        .contact-icon {
+            width: 38px;
+            height: 38px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background-color: #fde7f1;
+            color: #e51e78;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item h3 {
+            font-size: 13px;
+            color: #182033;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p {
+            font-size: 13px;
+            color: #687080;
+            line-height: 1.5;
+        }
+
+        .map-container {
+            width: 100%;
+            margin-top: 35px;
+            border-radius: 13px;
+            overflow: hidden;
+            background-color: #f3f4f6;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 270px;
+            border: none;
+            display: block;
+        }
+
+        .map-info {
+            padding: 18px;
+        }
+
+        .map-info h3 {
+            font-size: 14px;
+            color: #182033;
+            margin-bottom: 7px;
+        }
+
+        .map-info p {
+            font-size: 12px;
+            color: #687080;
+            margin-bottom: 13px;
+        }
+
+        .map-info a {
+            font-size: 12px;
+            color: #e51e78;
+            text-decoration: none;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-section {
+                gap: 35px;
+                padding: 45px 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+                padding: 40px 6%;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+
+
+        .footer {
+            width: 100%;
+            background-color: #111827;
+            color: #a8b6ca;
+            padding: 55px 3.5% 25px;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr 0.8fr;
+            gap: 45px;
+            padding-bottom: 52px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 17px;
+        }
+
+        .footer-icon {
+            width: 45px;
+            height: 45px;
+            background-color: #e51e78;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo h2 {
+            color: white;
+            font-size: 22px;
+        }
+
+        .footer-brand>p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 25px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 18px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background-color: #202b3b;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 21px;
+        }
+
+        .social-icons a:hover {
+            background-color: #e51e78;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .footer-column a {
+            color: #a8b6ca;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .footer-details {
+            border-top: 1px solid #293344;
+            border-bottom: 1px solid #293344;
+            padding: 38px 0px 55px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .footer-details h3 {
+            color: #71829d;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .footer-details p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .copyright {
+            padding-top: 38px;
+        }
+
+        .copyright p {
+            color: #71829d;
+            font-size: 15px;
+        }
+
+        @media (max-width: 1024px) {
+            .footer-top {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer {
+                padding: 40px 6% 25px;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 20px;
+            }
+
+            .footer-details {
+                flex-direction: column;
+                gap: 30px;
+                grid-template-columns: 1fr;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="navbar">
+
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa-solid fa-paw"></i>
+                </div>
+
+                <div class="logo-text">
+                    <h2>Paws & Play</h2>
+                    <p>Premium Pet Care</p>
+                </div>
+            </div>
+
+            <nav>
+                <a href="#">Services</a>
+                <a href="#">About</a>
+                <a href="#">Gallery</a>
+                <a href="#">Team</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <i class="fa-regular fa-moon"></i>
+                <button>Book Now</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+
+        <h1>Get in Touch</h1>
+
+        <p>
+            Book an appointment, ask a question, or just say hello. We'd love to hear from you!
+        </p>
+    </section>
+
+
+    <section class="contact-section">
+
+        <!-- Left Side: Appointment Form -->
+        <div class="contact-form">
+
+            <h2>Book an Appointment</h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+
+            <form>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" placeholder="Jane Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="(555) 123-4567" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="jane@example.com" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Pet's Name</label>
+                        <input type="text" placeholder="Max">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pet Type</label>
+                        <select required>
+                            <option value="">Select pet type</option>
+                            <option>Dog</option>
+                            <option>Cat</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Service Interested In</label>
+                    <select required>
+                        <option value="">Select a service</option>
+                        <option>Full Grooming</option>
+                        <option>Bath & Brush</option>
+                        <option>Daycare</option>
+                        <option>Overnight Boarding</option>
+                        <option>Nail Trim</option>
+                        <option>Puppy Package</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Information</label>
+                    <textarea
+                        placeholder="Tell us about your pet, preferred dates, or any special requirements..."></textarea>
+                </div>
+
+                <button type="submit">Submit Request</button>
+
+            </form>
+        </div>
+
+
+        <!-- Right Side: Contact Information -->
+        <div class="contact-information">
+
+            <h2>Contact Information</h2>
+            <p>Reach out through any of these channels.</p>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-regular fa-envelope"></i>
+                </div>
+
+                <div>
+                    <h3>Email</h3>
+                    <p>hello@pawsandplay.com</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <div>
+                    <h3>Phone</h3>
+                    <p>(555) 728-7529</p>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">
+                    <i class="fa-regular fa-clock"></i>
+                </div>
+
+                <div>
+                    <h3>Hours</h3>
+                    <p>Mon-Fri: 7:00 AM - 7:00 PM</p>
+                    <p>Saturday: 8:00 AM - 6:00 PM</p>
+                    <p>Sunday: 9:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+
+            <div class="map-container">
+
+                <iframe
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-97.76%2C30.25%2C-97.72%2C30.29&layer=mapnik">
+                </iframe>
+
+                <div class="map-info">
+                    <h3>Paws & Play</h3>
+                    <p>456 Pet Paradise Lane, Austin, TX 78701</p>
+
+                    <a href="https://www.openstreetmap.org/#map=15/30.2672/-97.7431" target="_blank">
+                        Get Directions
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <div class="footer-icon">
+                        <i class="fa-solid fa-paw"></i>
+                    </div>
+                    <h2>Paws & Play</h2>
+                </div>
+
+                <p>
+                    Premium pet grooming, daycare, and boarding
+                    services in Austin, TX. Loving care for your
+                    furry family members since 2015.
+                </p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Services</h3>
+                <a href="#services">Grooming</a>
+                <a href="#services">Daycare</a>
+                <a href="#services">Boarding</a>
+                <a href="#services">Pricing</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Company</h3>
+                <a href="#about">About Us</a>
+                <a href="#team">Our Team</a>
+                <a href="#gallery">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Support</h3>
+                <a href="#">FAQs</a>
+                <a href="#">New Client Info</a>
+                <a href="#">Vaccination Policy</a>
+                <a href="#">Cancellation Policy</a>
+            </div>
+
+        </div>
+
+        <div class="footer-details">
+
+            <div>
+                <h3>HOURS</h3>
+                <p>Mon-Fri: 7:00 AM - 7:00 PM</p>
+                <p>Saturday: 8:00 AM - 6:00 PM</p>
+                <p>Sunday: 9:00 AM - 5:00 PM</p>
+            </div>
+
+            <div>
+                <h3>CONTACT</h3>
+                <p>hello@pawsandplay.com</p>
+                <p>(555) 728-7529</p>
+            </div>
+
+            <div>
+                <h3>LOCATION</h3>
+                <p>456 Pet Paradise Lane</p>
+                <p>Austin, TX 78701</p>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 Paws & Play. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
